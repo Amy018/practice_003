@@ -1,123 +1,116 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Form</title>
+    <title>Stanbic Bank Business Form</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+            background-color: #808080;
             margin: 0;
             padding: 20px;
         }
-        form {
-            max-width: 600px;
-            margin: auto;
+        .form-container {
             background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid #007BFF; /* Border color */
         }
-        fieldset {
-            border: none;
+        h2 {
+            text-align: center;
+            color: #0056b3; /* Header color */
             margin-bottom: 20px;
         }
-        legend {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+        .form-group {
+            margin-bottom: 20px;
         }
         label {
             display: block;
-            margin: 10px 0 5px;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
         }
-        input, select, button {
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
+            padding: 12px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 5px;
+            transition: border-color 0.3s;
         }
-        input[type="button"], input[type="reset"], input[type="submit"] {
-            background-color: #4CAF50;
+        input:focus,
+        select:focus {
+            border-color: #007BFF; /* Focus border color */
+            outline: none;
+        }
+        button {
+            background-color: #28a745; /* New button color */
             color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
-        input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover {
-            background-color: #45a049;
+        button:hover {
+            background-color: #218838; /* Darker shade on hover */
         }
     </style>
 </head>
 <body>
-    <form action="process-business.php" method="post">
-        <fieldset>
-            <legend>Business Information</legend>
-            <label for="business-name">Business Name:</label>
-            <input type="text" id="business-name" name="businessName" placeholder="Enter your business name" required>
 
-            <label for="email">Email Address:</label>
+<div class="form-container">
+    <h2> Stanbic Bank Business Registration</h2>
+    <form>
+        <div class="form-group">
+            <label for="business-name"> Name</label>
+            <input type="text" id="business-name" name="business-name" placeholder="Enter your business name" required>
+        </div>
+        <div class="form-group">
+            <label for="contact-person">Contact Person</label>
+            <input type="text" id="contact-person" name="contact-person" placeholder="Enter contact person's name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
-
-            <label for="website">Website URL:</label>
-            <input type="url" id="website" name="website" placeholder="https://yourbusiness.com">
-
-            <label for="established">Date Established:</label>
-            <input type="date" id="established" name="established">
-
-            <label for="category">Business Category:</label>
-            <select id="category" name="category">
-                <option value="retail">Retail</option>
-                <option value="service">Service</option>
-                <option value="manufacturing">Manufacturing</option>
-                <option value="tech">Technology</option>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+        </div>
+        <div class="form-group">
+            <label for="business-address">Business Address</label>
+            <input type="text" id="business-address" name="business-address" placeholder="Enter business address" required>
+        </div>
+        <div class="form-group">
+            <label for="registration-number">Business Registration Number</label>
+            <input type="text" id="registration-number" name="registration-number" placeholder="Enter registration number" required>
+        </div>
+        <div class="form-group">
+            <label for="business-type">Business Type</label>
+            <select id="business-type" name="business-type" required>
+                <option value="" disabled selected>Select Type</option>
+                <option value="sole-proprietorship">Sole Proprietorship</option>
+                <option value="partnership">Partnership</option>
+                <option value="corporation">Corporation</option>
+                <option value="llc">LLC</option>
             </select>
-
-            <label for="description">Description:</label>
-            <input type="text" id="description" name="description" placeholder="Brief description of your business">
-        </fieldset>
-
-        <fieldset>
-            <legend>Additional Information</legend>
-            <label>Choose a color for your branding:</label>
-            <input type="color" name="brandingColor">
-
-            <label>Upload Business Logo:</label>
-            <input type="file" name="logo" accept="image/*">
-
-            <label>Business Hours:</label>
-            <input type="time" name="openTime"> to <input type="time" name="closeTime">
-
-            <label>Number of Employees:</label>
-            <input type="number" name="employees" min="1" max="1000">
-
-            <label>Monthly Revenue Range:</label>
-            <input type="range" name="revenue" min="1000" max="100000" step="1000">
-
-            <label>Agree to Terms:</label>
-            <input type="checkbox" name="terms" required> I agree to the terms and conditions
-        </fieldset>
-
-        <fieldset>
-            <legend>Marketing</legend>
-            <label>Preferred Marketing Medium:</label>
-            <input type="radio" name="marketing" value="digital" required> Digital
-            <input type="radio" name="marketing" value="print"> Print
-            <input type="radio" name="marketing" value="events"> Events
-
-            <label>Subscribe to Newsletter:</label>
-            <input type="checkbox" name="newsletter"> Yes
-        </fieldset>
-
-        <fieldset>
-            <legend>Actions</legend>
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
-            <input type="button" value="Preview" onclick="alert('Preview feature is under development!')">
-        </fieldset>
+        </div>
+        <div class="form-group">
+            <label for="services-offered">Type of Services Offered</label>
+            <input type="text" id="services-offered" name="services-offered" placeholder="Describe services offered" required>
+        </div>
+        <button type="submit">Register</button>
     </form>
+</div>
+
 </body>
 </html>
